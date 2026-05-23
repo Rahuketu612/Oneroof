@@ -9,17 +9,23 @@ import {
   Users, 
   LogOut,
   ChevronDown,
+  Settings,
+  FileBarChart,
+  CheckCircle,
   Bell
 } from 'lucide-react'
 import { useState } from 'react'
+import NotificationBell from '../notifications/NotificationBell'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Workspaces', href: '/workspaces', icon: Building2 },
   { name: 'Compliance', href: '/compliance', icon: FileCheck },
+  { name: 'Approvals', href: '/approvals', icon: CheckCircle },
   { name: 'Documents', href: '/documents', icon: FolderOpen },
   { name: 'Notices', href: '/notices', icon: AlertCircle },
   { name: 'Clients', href: '/clients', icon: Users },
+  { name: 'Reports', href: '/reports', icon: FileBarChart },
 ]
 
 export default function DashboardLayout() {
@@ -73,12 +79,14 @@ export default function DashboardLayout() {
             </div>
 
             {/* Right side */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {/* Notifications */}
-              <button className="p-2 text-gray-400 hover:text-gray-500 relative">
-                <Bell className="w-5 h-5" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-danger-500 rounded-full"></span>
-              </button>
+              <NotificationBell />
+
+              {/* Settings */}
+              <Link to="/settings" className="p-2 text-gray-400 hover:text-gray-500">
+                <Settings className="w-5 h-5" />
+              </Link>
 
               {/* User Menu */}
               <div className="relative">
@@ -103,6 +111,13 @@ export default function DashboardLayout() {
                     <div className="px-4 py-2 border-b border-gray-100">
                       <p className="text-sm font-medium">{user?.email}</p>
                     </div>
+                    <Link
+                      to="/settings"
+                      className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                    >
+                      <Settings className="w-4 h-4" />
+                      Settings
+                    </Link>
                     <button
                       onClick={handleLogout}
                       className="w-full flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"

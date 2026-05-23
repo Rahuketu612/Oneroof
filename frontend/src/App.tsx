@@ -15,6 +15,9 @@ import CompliancePage from './pages/compliance/CompliancePage'
 import DocumentsPage from './pages/documents/DocumentsPage'
 import NoticesPage from './pages/notices/NoticesPage'
 import ClientsPage from './pages/clients/ClientsPage'
+import ApprovalsPage from './pages/approvals/ApprovalsPage'
+import SettingsPage from './pages/settings/SettingsPage'
+import ReportsPage from './pages/reports/ReportsPage'
 
 // Protected route wrapper
 function ProtectedRoute({ children, allowedRoles }: { children: React.ReactNode, allowedRoles?: string[] }) {
@@ -63,6 +66,9 @@ function App() {
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/notices" element={<NoticesPage />} />
             <Route path="/clients" element={<ClientsPage />} />
+            <Route path="/approvals" element={<ApprovalsPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
           </Route>
           
           {/* Fallback */}
