@@ -4,7 +4,7 @@ API module initialization.
 
 from fastapi import APIRouter
 
-from oneroof.api import users, workspaces, compliance, documents, approvals, notices, communications, dashboard
+from oneroof.api import users, workspaces, compliance, documents, approvals, notices, communications, dashboard, ai
 
 router = APIRouter()
 
@@ -16,5 +16,6 @@ router.include_router(approvals.router, prefix="/approvals", tags=["Approvals"])
 router.include_router(notices.router, prefix="/notices", tags=["Notices"])
 router.include_router(communications.router, prefix="/communications", tags=["Communications"])
 router.include_router(dashboard.router, prefix="/dashboard", tags=["Dashboard"])
+router.include_router(ai.router, prefix="/ai", tags=["AI"])
 
 routes = router

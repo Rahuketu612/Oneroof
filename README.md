@@ -65,3 +65,49 @@ frontend/
 - Immutable audit logs
 - IP/device logging for approvals
 - Watermarking for sensitive downloads
+
+## Development
+
+### Backend Setup
+```bash
+cd oneroof
+pip install -r requirements.txt
+python -m oneroof.utils.migrate --seed  # Create tables + demo data
+uvicorn oneroof.main:app --reload
+```
+
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## Production Deployment
+
+### Docker
+```bash
+# Build and start
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop
+docker-compose down
+```
+
+### Environment
+Copy `.env.example` to `.env` and configure:
+- `DATABASE_URL` - PostgreSQL connection
+- `SECRET_KEY` - JWT signing key
+- `REDIS_URL` - Redis for caching
+
+## Demo Credentials
+
+| Role | Email | Password |
+|------|-------|----------|
+| Partner | partner@sharmaassociates.com | partner123 |
+| Manager | manager@sharmaassociates.com | manager123 |
+| Staff | staff@sharmaassociates.com | staff123 |
+| Client | admin@techsol.com | client123 |
